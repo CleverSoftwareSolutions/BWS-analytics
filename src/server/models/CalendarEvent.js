@@ -14,8 +14,14 @@ const CalendarEventSchema = mongoose.Schema({
   minutes: {
     type: Number
   },
+  description: {
+    type: String
+  },
   worked_at: {
     type: Date
+  },
+  action: {
+    type: String
   }
 }, {
   timestamps: {
