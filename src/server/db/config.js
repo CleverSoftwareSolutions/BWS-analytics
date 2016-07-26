@@ -1,2 +1,2 @@
-export const development = 'mongodb://localhost/mydb';
-export const production = 'mongodb://localhost/mydb';
+export const development = 'mongodb://localhost/screenr-dev';
+export const production = 'mongodb://localhost/screenr-prod';
