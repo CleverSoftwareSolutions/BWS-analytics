@@ -1,20 +1,17 @@
 import compose from 'koa-compose';
 import Router from 'koa-router';
 import importDir from 'import-dir';
+import {prefix} from './config';
 
-const routerConfigs = [{ folder: 'api', prefix: '/api' }];
+const routes = importDir('./api');
 
-export default function routes() {
-  const composed = routerConfigs.reduce((prev, curr) => {
-    const _routes = importDir('./' + curr.folder);
-    const router = new Router({
-      prefix: curr.prefix
-    });
+export default function api() {
+  const router = new Router({ prefix });
 
-    Object.keys(_routes).map(name => _routes[name](router));
+  Object.keys(routes).forEach(name => routes[name](router));
 
-    return [router.routes(), router.allowedMethods(), ...prev];
-  }, []);
-
-  return compose(composed);
+  return compose([
+    router.routes(),
+    router.allowedMethods(),
+  ]);
 }

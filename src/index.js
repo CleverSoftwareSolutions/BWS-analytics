@@ -1,10 +1,14 @@
 import 'babel-polyfill';
 import 'isomorphic-fetch';
 import app from './server';
-import { connectDatabase } from './server/db';
+import {
+  connectDatabase,
+  registerCalendarClient,
+} from './server/db';
 import { development, production } from './server/db/config';
 
 const port = process.env.PORT || 4000;
+
 const databaseConfig =
   (process.env.NODE_ENV === 'production') ? production : development;
 
@@ -16,6 +20,12 @@ const databaseConfig =
     console.error('Unable to connect to database');
   }
 
-  await app.listen(port);
-  console.log(`Server started on port ${port}`);
+  try {
+    await registerCalendarClient();
+
+    await app.listen(port);
+    console.log(`Server started on port ${port}`);
+  } catch (error) {
+    console.log(error);
+  }
 })();

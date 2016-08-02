@@ -1,4 +1,5 @@
-import mongoose from 'mongoose-fill';
+import mongoose from 'mongoose';
+mongoose.Promise = global.Promise;
 
 const CalendarEventSchema = mongoose.Schema({
   user: {

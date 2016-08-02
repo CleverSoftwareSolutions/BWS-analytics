@@ -2,10 +2,6 @@
 
 ## Commands
 
-#### Setup
-```bash
-npm install
-```
 #### Development
 ```bash
 # using nodemon
@@ -22,17 +18,17 @@ npm run watch
     + tools: babel-register
     + presets: babel-preset-es2015-node5
     + plugins: transform-async-to-generator, syntax-async-functions
-    
+
 ## Deployment
 
 ### Dependencies
 
 - Preferably a Linux machine
 - MongoDB v > 2.6.0
-- nvm with node v6.3.0 
+- nvm with node v6.3.0
 - have `pm2` installed globally
 - nginx
- 
+
 ### Process
 After cloning the repoistory, `cd` into it, then:
 ```bash
