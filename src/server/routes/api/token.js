@@ -1,4 +1,4 @@
-import AccessToken from '../../models/accessToken';
+import AccessToken from '../../models/AccessToken';
 import {isBearerAuthenticated} from '../../auth';
 
 export default (router) => {
